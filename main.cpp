@@ -47,14 +47,3 @@ void intro()
     cout << "As the sole survivor it is up to you to reach the surface, battling sea monsters along the way";
     cout << "Just make sure you don't run out of oxygen...\n\n";
 }
-
-void scene1()
-{
-    cout << "'And that is why my beliefs are inherently correct and yours are wrong!'\n";
-    cout << "'That's rich,' Marcus snickered, 'The teacher may know some math, but that may be it'\n";
-    cout << "'What do you think?' ";
-    string thoughts;
-    cin >> thoughts;
-    cout << "\n'Uh huh,' Marcus replied, 'Well we better get to the next class'\n";
-    cout << "--AN IDIOT APPROACHES--\n";
-}
