@@ -66,12 +66,12 @@ int player::getMetersToTravel()
 string player::getStats()
 {
     string stats;
-    stats += "\nHealth: " + health;
-    stats += "\nAttack: " + attack;
-    stats += "\nDefense: " + defense;
-    stats += "\nStrength Throw: " + strengthThrow;
-    stats += "\nOxygen Left: " + oxygenLeft;
-    stats += "\nMeters to travel: " + metersToTravel;
+    stats += "\nHealth: " + to_string(health);
+    stats += "\nAttack: " + to_string(attack);
+    stats += "\nDefense: " + to_string(defense);
+    stats += "\nStrength Throw: " + to_string(strengthThrow);
+    stats += "\nOxygen Left: " + to_string(oxygenLeft);
+    stats += "\nMeters to travel: " + to_string(metersToTravel);
     stats += "\n";
     return stats;
 }
