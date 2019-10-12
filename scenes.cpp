@@ -1,6 +1,9 @@
 #include <iostream>
-#include <string>
 #include "scenes.h"
+#include <string>
+
+
+using namespace std;
 
 scene::scene(string de, string name, int he, int at, int def, int hG) {
     desc = de;
