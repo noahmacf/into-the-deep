@@ -24,4 +24,8 @@ class scene {
         int getdefense();
         int gethealthGain();
 
+        int sethealth(int add);
+        int setattack(int add);
+        int setdefense(int add);
+        int sethealthGain(int add);
 };
