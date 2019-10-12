@@ -9,15 +9,15 @@ using namespace std;
 class player
 {
 private:
-    int health = 10;
-    int attack = 10;
-    int defense = 10;
-    int strengthThrow = 10;
-    int oxygenLeft = 100;
-    int ropeDurability = 10;
-    int chanceDurabilityDecrease = 10;
-    int harpoonDurability = 10;
-    int metersToTravel = 10;
+    int health;
+    int attack;
+    int defense;
+    int strengthThrow;
+    int oxygenLeft;
+    int ropeDurability;
+    int chanceDurabilityDecrease;
+    int harpoonDurability;
+    int metersToTravel;
 
 public:
     player(int he, int at, int de, int st, int ox, int ro, int ch, int ha, int me);

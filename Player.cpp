@@ -6,6 +6,7 @@ using namespace std;
 
 player::player(int he, int at, int de, int st, int ox, int ro, int ch, int ha, int me)
 {
+    
     health = he;
     attack = at;
     defense = de;
