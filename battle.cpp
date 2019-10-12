@@ -87,11 +87,11 @@ void doBattle(player::player user, vector<scene>& enemy, int index)
     }
 }
 
-void bubble() {
+void bubble(player::player user) {
 
     srand(static_cast<unsigned int>(time(0)));
 
-    int random = (rand() % 10) + 1;
+    int random = (rand() % 4) + 1;
 
     int option = 0;
 
@@ -100,14 +100,39 @@ void bubble() {
     cout << endl;
     cout << "1. You can guaruntee that your oxygen level increases by one\n";
     cout << "or...\n";
-    cout << "2. You can take a risk and have a 25% chance of increasing your oxygen by 5\n"; 
+    cout << "2. You can take a risk and have a 25% chance of increasing your oxygen by 5\n";
+    cout << endl; 
     cout << "Select option 1 or 2: ";
     cin >> option;
     cout << endl;
 
+    bool valid = false;
+
+    do 
+    {
     if (option == 1) {
+        user.setOxygenLeft(-5);
+        cout << "Oxygen is now " << user.getOxygenLeft << "\n";
+        valid = true;
+    } else if (option == 2) {
         
-    }
+        int guess;
+        cout << "Pick a number between 1 and 4\n";
+        cin >> guess;
+        if (guess == random) {
+            cout << "Congrats! You guessed correctly!\n";
+            cout << "Oxygen is now " << user.getOxygenLeft << "\n";
+        } else {
+            cout << "Incorrect guess! No oxygen received\n";
+        }
+        valid = true;
+    } else {
+        cout << "Invalid input, try again.\n";
+        valid = false;
+    }   
+        
+    } while (!valid);
+
 }
 
     
