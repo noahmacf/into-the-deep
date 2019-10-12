@@ -35,7 +35,7 @@ void doBattle(player::player user)
     }
 }
 
-void bubble() {
+void bubble(player::player user) {
 
     srand(static_cast<unsigned int>(time(0)));
 
@@ -54,8 +54,20 @@ void bubble() {
     cout << endl;
 
     if (option == 1) {
-        
+        // user.setOxygenLeft(-5);
+        cout << "Oxygen is now " << user.getOxygenLeft << "\n";
+    } else if (option == 2) {
+        int guess;
+        cout << "Pick a number between 1 and 4\n";
+        cin >> guess;
+        if (guess == random) {
+            cout << "Congrats! You guessed correctly!\n";
+            cout << "Oxygen is now " << user.getOxygenLeft << "\n";
+        } else {
+            cout << "Incorrect guess! No oxygen received\n";
+        }
     }
+    
 }
 
     

@@ -32,6 +32,8 @@ public:
     int getHarpoonDurability();
     int getMetersToTravel();
     string getStats();
+
+    void changeOxygen(int amt);
     
 };
 
