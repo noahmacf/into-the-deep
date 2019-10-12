@@ -75,3 +75,48 @@ string player::getStats()
     stats += "\n";
     return stats;
 }
+
+int player::setHealth(int add)
+{
+    return health + add;
+}
+
+int player::setAttack(int add)
+{
+    return attack + add;
+}
+
+int player::setDefense(int add)
+{
+    return defense + add;
+}
+
+int player::setStrengthThrow(int add)
+{
+    return strengthThrow + add;
+}
+
+int player::setOxygenLeft(int add)
+{
+    return oxygenLeft + add;
+}
+
+int player::setRopeDurability(int add)
+{
+    return ropeDurability + add;
+}
+
+int player::setChanceDurabilityDecrease(int add)
+{
+    return chanceDurabilityDecrease + add;
+}
+
+int player::setHarpoonDurability(int add)
+{
+    return harpoonDurability + add;
+}
+
+int player::setMetersToTravel(int add)
+{
+    return metersToTravel + add;
+}
