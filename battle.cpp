@@ -2,23 +2,55 @@
 #include <string>
 #include "Player.cpp"
 #include "scenes.h"
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
-void battle()
-{
-    scene blank("", "", -1, -1, -1, -1);
-    vector<scene> scenes;
+void battle() {
+    player user();
+    bubble();
+}
 
-    scenes[0] = goldfish;
+void doBattle() {
     
-    scenes.push_back(blank);
+}
 
-    bool battleWon = false;
-    while(!battleWon)
-    {
-        cout << "";
+void bubble() {
+
+    srand(static_cast<unsigned int>(time(0)));
+
+    int random = (rand() % 10) + 1;
+
+    int option = 0;
+
+    cout << "An oxygen bubble has appeared nearby!\n";
+    cout << "There are two ways to gain oxygen from the bubble, but both are not guarunteed...\n";
+    cout << endl;
+    cout << "1. You can guaruntee that your oxygen level increases by one\n";
+    cout << "or...\n";
+    cout << "2. You can take a risk and have a 25% chance of increasing your oxygen by 5\n"; 
+    cout << "Select option 1 or 2: ";
+    cin >> option;
+    cout << endl;
+
+    if (option == 1) {
+        
     }
+
+
+    
+
+    /*
+        upgrade strength?
+            oxygen --;
+            strenght += notpop;
+
+        if they pop
+            pop++
+        else
+            notpop++
+    */
 }
 
 /*
