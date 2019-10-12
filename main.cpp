@@ -14,8 +14,13 @@ int main()
 {
     intro();
 
-    // battle();
+    battle();
+    dead = battle();
     
+    if(dead)
+    {
+        cout << "\nEND OF GAME STOP PLAYING";
+    }
 
     return 0;
 }
