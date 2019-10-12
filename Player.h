@@ -9,25 +9,28 @@ using namespace std;
 class player
 {
 private:
-    // Health
-    int clout = 10;
-    // Attack
-    int intelligence = 10;
-    // Defense
-    int wisdom = 10;
-    // Speed
-    int wit = 10;
-    // Stamina
-    int caffeine = 10;
+    int health = 10;
+    int attack = 10;
+    int defense = 10;
+    int strengthThrow = 10;
+    int oxygenLeft = 100;
+    int ropeDurability = 10;
+    int chanceDurabilityDecrease = 10;
+    int harpoonDurability = 10;
+    int metersToTravel = 10;
 
 public:
-    player(int clo, int intel, int wis, int wi, int caff);
+    player(int he, int at, int de, int st, int ox, int ro, int ch, int ha, int me);
 
-    int getClout();
-    int getIntelligence();
-    int getWisdom();
-    int getWit();
-    int getCaffeine();
+    int getHealth();
+    int getAttack();
+    int getDefense();
+    int getStrengthThrow();
+    int getOxygenLeft();
+    int getRopeDurability();
+    int getChanceDurabilityDecrease();
+    int getHarpoonDurability();
+    int getMetersToTravel();
     string getStats();
     
 };
