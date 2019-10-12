@@ -111,7 +111,8 @@ bool battle()
     scene lockNessMonster("THE ULTIMATE CHALLENGE: Defeat this beast and reach the surface!", "Loch Ness Monster", 35, 17, 17, 30);
     enemy.push_back(lockNessMonster);
     doBattle(user, enemy, index);
-    bubble(user);
+    
+
     if (died) return true;
 }
 
@@ -189,9 +190,15 @@ void doBattle(player user, vector<scene>& enemy, int index)
             battleWon = true;
         }
 
-        if(user.getHealth <= 0)
+        if(user.getHealth() <= 0)
         {
             cout << "You have died. Sad.";
+            died = true;
+            return;
+        }
+
+        if(user.getOxygenLeft() <= 0) {
+            cout << "You ran out of oxygen, thus you have died.\n";
             died = true;
             return;
         }
@@ -200,50 +207,52 @@ void doBattle(player user, vector<scene>& enemy, int index)
 
 void bubble(player user) {
 
-    srand(static_cast<unsigned int>(time(0)));
+    if(!died) {
 
-    int random = (rand() % 4) + 1;
+        srand(static_cast<unsigned int>(time(0)));
 
-    int option = 0;
+        int random = (rand() % 4) + 1;
 
-    cout << "An oxygen bubble has appeared nearby!\n";
-    cout << "There are two ways to gain oxygen from the bubble, but both are not guarunteed...\n";
-    cout << endl;
-    cout << "1. You can guaruntee that your oxygen level increases by one\n";
-    cout << "or...\n";
-    cout << "2. You can take a risk and have a 25% chance of increasing your oxygen by 5\n";
-    cout << endl; 
-    cout << "Select option 1 or 2: ";
-    cin >> option;
-    cout << endl;
+        int option = 0;
 
-    bool valid = false;
+        cout << "An oxygen bubble has appeared nearby!\n";
+        cout << "There are two ways to gain oxygen from the bubble, but both are not guarunteed...\n";
+        cout << endl;
+        cout << "1. You can guaruntee that your oxygen level increases by one\n";
+        cout << "or...\n";
+        cout << "2. You can take a risk and have a 25% chance of increasing your oxygen by 5\n";
+        cout << endl; 
+        cout << "Select option 1 or 2: ";
+        cin >> option;
+        cout << endl;
 
-    do 
-    {
-    if (option == 1) {
-        user.setOxygenLeft(-5);
-        cout << "Oxygen is now " << user.getOxygenLeft() << "\n";
-        valid = true;
-    } else if (option == 2) {
-        
-        int guess;
-        cout << "Pick a number between 1 and 4\n";
-        cin >> guess;
-        if (guess == random) {
-            cout << "Congrats! You guessed correctly!\n";
+        bool valid = false;
+
+        do 
+        {
+        if (option == 1) {
+            user.setOxygenLeft(-5);
             cout << "Oxygen is now " << user.getOxygenLeft() << "\n";
+            valid = true;
+        } else if (option == 2) {
+            
+            int guess;
+            cout << "Pick a number between 1 and 4\n";
+            cin >> guess;
+            if (guess == random) {
+                cout << "Congrats! You guessed correctly!\n";
+                cout << "Oxygen is now " << user.getOxygenLeft() << "\n";
+            } else {
+                cout << "Incorrect guess! No oxygen received\n";
+            }
+            valid = true;
         } else {
-            cout << "Incorrect guess! No oxygen received\n";
-        }
-        valid = true;
-    } else {
-        cout << "Invalid input, try again.\n";
-        valid = false;
-    }   
-        
-    } while (!valid);
-
+            cout << "Invalid input, try again.\n";
+            valid = false;
+        }   
+            
+        } while (!valid);
+    }
 }
 
 void upgradeDistance(player user) {
@@ -257,19 +266,19 @@ void upgradeDistance(player user) {
     bool valid;
     do 
     {
-    if (response == "Y" || response == "y") {
-        // ask if they want to spend 1 oxygen to get 2 more meters
-        // or 2 oxygen to get 5
-        valid = true;
-    } else if (response == "N" || response == "n") {
+        if (response == "Y" || response == "y") {
+            // ask if they want to spend 1 oxygen to get 2 more meters
+            // or 2 oxygen to get 5
+            valid = true;
+        } else if (response == "N" || response == "n") {
 
-        cout << "Okay, word.\n";        
-        valid = true;
-    } else {
-        cout << "Invalid input, try again.\n";
-        cout << "Only input 'Y' or 'N'\n";
-        valid = false;
-    }   
+            cout << "Okay, word.\n";        
+            valid = true;
+        } else {
+            cout << "Invalid input, try again.\n";
+            cout << "Only input 'Y' or 'N'\n";
+            valid = false;
+        }   
         
     } while (!valid);
 
