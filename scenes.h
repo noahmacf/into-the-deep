@@ -25,3 +25,5 @@ class scene {
         int gethealthGain();
 
 };
+
+scene goldfish("", "", -1, -1, -1, -1);

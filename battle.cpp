@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Player.cpp"
+#include "scenes.h"
 
 using namespace std;
 
@@ -12,7 +13,6 @@ void battle()
 
 void doBattle(player::player user)
 {
-
     bool battleWon = false;
     while(!battleWon)
     {
@@ -33,6 +33,7 @@ void doBattle(player::player user)
         
     }
 }
+
 /*
     actions:
         attacks:
