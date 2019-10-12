@@ -1,17 +1,26 @@
 #include <iostream>
 #include <string>
 #include "Player.cpp"
+#include "scenes.h"
 
 using namespace std;
 
 void battle()
 {
+    scene blank("", "", -1, -1, -1, -1);
+    vector<scene> scenes;
+
+    scenes[0] = goldfish;
+    
+    scenes.push_back(blank);
+
     bool battleWon = false;
     while(!battleWon)
     {
         cout << "";
     }
 }
+
 /*
     actions:
         attacks:
