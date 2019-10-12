@@ -93,32 +93,83 @@ void battle()
     
     scene lockNessMonster("THE ULTIMATE CHALLENGE: Defeat this beast and reach the surface!", "Loch Ness Monster", 35, 17, 17, 30);
     enemy.push_back(lockNessMonster);
-    doBattle(user, enemy, index); index++;
+    doBattle(user, enemy, index);
     bubble(user);
-
-
 }
 
 void doBattle(player user, vector<scene>& enemy, int index)
 {
     bool battleWon = false;
+    int slapsLeft = 1;
+    int harpoonsLeft = 10;
+    int blocksLeft = 3;
+    int turns = 0;
+    bool blocked = false;
     while(!battleWon)
     {
+        //Player turn
+        blocked = false;
         int index = 0;
         cout << "Please choose a method of attack\n";
         cout << "1. Harpoon    2. Punch\n";
         cout << "3. Slap       3. Block\n";
         cout << "Please enter in a number if you are unsure how the attack works\n";
-        cout << "Type exit to exit\n";
+        cout << "Type exit to exit information about attacks\n";
         string input;
         do
         {
             cin >> input;
             if(input == "1") cout << "\nYou shoot a harpoon at the " + enemy[index].getfishName + " causing "  + (user.getAttack() + 5) + (string)" damage\n";
-            if(input == "2") cout << "\nYou punch the " + enemy[index].getfishName + " causing " + user.getAttack() + (string)" damage\n";
-            if(input == "3") cout << "\nYou slap the " + enemy[index].getfishName + " causing " + (user.getAttack() + 20) + (string)" damage\n";
-            if(input == "4") cout << "\nYou block the " + enemy[index].getfishName + " causing the fish to not hit you\n";
+            else if(input == "2") cout << "\nYou punch the " + enemy[index].getfishName + " causing " + user.getAttack() + (string)" damage\n";
+            else if(input == "3") cout << "\nYou slap the " + enemy[index].getfishName + " causing " + (user.getAttack() + 20) + (string)" damage\n";
+            else if(input == "4") cout << "\nYou block the " + enemy[index].getfishName + " causing the fish to not hit you\n";
         } while (input != "exit");
+        cout << "\n--Status--\n";
+        cout << "You may use the harpoon " + harpoonsLeft + (string)" more times.\n"; 
+        cout << "You may use punch as many more times as you wish.\n";
+        cout << "You may use slap in " + (3 - turns) + (string)" more turns";
+        cout << "You may use slap " + slapsLeft + (string)" more times\n";
+        cout << "You may use block " + blocksLeft + (string)" more times.\n";
+
+        cout << "\nWhat move do you want to use?\n";
+        cin >> input;
+        if(input == "1") {
+            cout << "\nYou shot a harpoon at the " + enemy[index].getfishName + " causing "  + (user.getAttack() + 5) + (string)" damage\n";
+            enemy[index].sethealth(-(user.getAttack + 5));
+        }
+        if(input == "2") {
+            cout << "\nYou punched the " + enemy[index].getfishName + " causing " + user.getAttack() + (string)" damage\n";
+            enemy[index].sethealth(-(user.getAttack));
+        }
+        if(input == "3" && turns >= 3) {
+            cout << "\nYou slapped the " + enemy[index].getfishName + " causing " + (user.getAttack() + 20) + (string)" damage\n";
+            enemy[index].sethealth(-(user.getAttack + 20));
+            slapsLeft--;
+        }
+        if(input == "3" && turns < 3) {
+            cout << "\nSorry! you have " + (3 - turns) + (string) + " turns left before you can use slap\n";
+        }
+        if(input == "4") {
+            cout << "\nYou blocked the " + enemy[index].getfishName + " causing the fish to not hit you\n";
+            blocksLeft--;
+        }
+        turns++;
+
+        // enemy
+        if(!blocked) {
+            cout << "The enemy hit you!!";
+            user.setHealth(-(enemy[index].getattack));
+            cout << "You have been dealth with " + enemy[index].getattack + (string)" damage";
+        }
+        else {
+            cout << "The enemy was blocked";
+        }
+        
+        if(enemy[index].gethealth <= 0)
+        {
+            cout << "You have won!!";
+            battleWon = true;
+        }
     }
 }
 

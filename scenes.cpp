@@ -14,10 +14,6 @@ scene::scene(string de, string name, int he, int at, int def, int hG) {
     healthGain = hG;
 }
 
-void scene::battle() {
-    
-}
-
 string scene::getDesc() {
     return desc;
 }
@@ -36,6 +32,21 @@ int scene::getattack() {
 int scene::getdefense() {
     return defense;
 }
+
 int scene::gethealthGain() {
     return healthGain;
+}
+
+int scene::sethealth(int add) {
+    return health + add;
+}
+int scene::setattack(int add) {
+    return attack + add;
+}
+
+int scene::setdefense(int add) {
+    return defense + add;
+}
+int scene::sethealthGain(int add) {
+    return healthGain + add;
 }
