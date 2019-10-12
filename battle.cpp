@@ -9,10 +9,14 @@ using namespace std;
 
 bool died = false;
 
+bool battle();
+void doBattle(player user, vector<scene>& enemy, int index);
+void bubble(player user);
+
 bool battle()
 {
     int index = 0;
-    player::player user(10, 10, 10, 10, 10, 10, 10, 10, 10);
+    player user(10, 10, 10, 10, 10, 10, 10, 10, 10);
     vector<scene> enemy;
     scene shrimp("Oh no! You've come into contact with a feisty shrimp! Fortunately it's not very strong and you can easly overcome it", "Shrimp", 5, 2, 1, 3);
     enemy.push_back(shrimp);
@@ -111,7 +115,7 @@ bool battle()
     if (died) return true;
 }
 
-void doBattle(player::player user, vector<scene>& enemy, int index)
+void doBattle(player user, vector<scene>& enemy, int index)
 {
     bool battleWon = false;
     int slapsLeft = 1;
@@ -194,7 +198,7 @@ void doBattle(player::player user, vector<scene>& enemy, int index)
     }
 }
 
-void bubble(player::player user) {
+void bubble(player user) {
 
     srand(static_cast<unsigned int>(time(0)));
 

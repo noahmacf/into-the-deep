@@ -6,8 +6,8 @@ using namespace std;
 class scene {
 
     private:
-        string desc = "";
-        string fishName = "";
+        string desc;
+        string fishName;
         int health;
         int attack;
         int defense;
