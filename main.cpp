@@ -9,6 +9,8 @@ bool playing = true;
 bool dead = false;
 bool won = false;
 
+void intro();
+
 // main function
 int main()
 {
