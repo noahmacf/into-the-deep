@@ -18,6 +18,14 @@ int main()
     scene1();
 
     return 0;
+
+    /*
+    while playing 
+        battle
+
+
+
+    */
 }
 
 void intro()
