@@ -32,7 +32,15 @@ public:
     int getHarpoonDurability();
     int getMetersToTravel();
     string getStats();
-    
+    int setHealth(int add);
+    int setAttack(int add);
+    int setDefense(int add);
+    int setStrengthThrow(int add);
+    int setOxygenLeft(int add);
+    int setRopeDurability(int add);
+    int setChanceDurabilityDecrease(int add);
+    int setHarpoonDurability(int add);
+    int setMetersToTravel(int add);
 };
 
 #endif
