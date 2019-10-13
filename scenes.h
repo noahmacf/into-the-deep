@@ -1,3 +1,6 @@
+#ifndef SCENES_H
+#define SCENES_H
+
 #include <iostream>
 #include <vector>
 
@@ -29,3 +32,5 @@ class scene {
         int setdefense(int add);
         int sethealthGain(int add);
 };
+
+#endif

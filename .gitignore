@@ -1,2 +1,5 @@
-#files
-main
+# object files
+*.o
+
+# program created
+deep 

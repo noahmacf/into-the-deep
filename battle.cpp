@@ -1,17 +1,13 @@
 #include <iostream>
 #include <string>
-#include "Player.cpp"
 #include "scenes.h"
 #include <ctime>
 #include <cstdlib>
+#include "battle.h"
 
 using namespace std;
 
 bool died = false;
-
-bool battle();
-void doBattle(player user, vector<scene>& enemy, int index);
-void bubble(player user);
 
 bool battle()
 {
@@ -113,7 +109,7 @@ bool battle()
     doBattle(user, enemy, index);
     
 
-    if (died) return true;
+    return died;
 }
 
 void doBattle(player user, vector<scene>& enemy, int index)
