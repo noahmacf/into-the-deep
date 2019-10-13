@@ -1,6 +1,5 @@
 #include <iostream>
-#include "Player.h"
-#include "battle.cpp"
+#include "battle.h"
 
 using namespace std;
 
