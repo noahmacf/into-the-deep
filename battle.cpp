@@ -115,29 +115,39 @@ bool battle()
 void doBattle(player user, vector<scene>& enemy, int index)
 {
     bool battleWon = false;
+    bool enemyDead = false;
     int slapsLeft = 1;
     int harpoonsLeft = 10;
     int blocksLeft = 3;
     int turns = 0;
     bool blocked = false;
+
+    // get enemy description
+    cout << enemy[index].getDesc() << "\n";
+
+    // set enemy stats
+    int enemyHealth = enemy[index].gethealth();
+
     while(!battleWon)
     {
-        //Player turn
+        //Player turn          
         blocked = false;
-        int index = 0;
         cout << "Please choose a method of attack\n";
         cout << "1. Harpoon    2. Punch\n";
-        cout << "3. Slap       3. Block\n";
+        cout << "3. Slap       4. Block\n";
+
+        cout << "\nThe enemy has " << enemyHealth << " health left\n";
+
         cout << "Please enter in a number if you are unsure how the attack works\n";
         cout << "Type exit to exit information about attacks\n";
         string input;
         do
         {
             cin >> input;
-            if(input == "1") cout << "\nYou shoot a harpoon at the " << enemy[index].getfishName() << " causing "  << (user.getAttack() + 5) << (string)" damage\n";
-            else if(input == "2") cout << "\nYou punch the " << enemy[index].getfishName() << " causing " << user.getAttack() << (string)" damage\n";
-            else if(input == "3") cout << "\nYou slap the " << enemy[index].getfishName() << " causing " << (user.getAttack() + 20) << (string)" damage\n";
-            else if(input == "4") cout << "\nYou block the " << enemy[index].getfishName() << " causing the fish to not hit you\n";
+            if(input == "1") cout << "\nYou would shoot a harpoon at the " << enemy[index].getfishName() << " causing "  << (user.getAttack() + 5) << (string)" damage\n";
+            else if(input == "2") cout << "\nYou would punch the " << enemy[index].getfishName() << " causing " << user.getAttack() << (string)" damage\n";
+            else if(input == "3") cout << "\nYou would slap the " << enemy[index].getfishName() << " causing " << (user.getAttack() + 20) << (string)" damage\n";
+            else if(input == "4") cout << "\nYou would block the " << enemy[index].getfishName() << " causing the fish to not hit you\n";
         } while (input != "exit");
         cout << "\n--Status--\n";
         cout << "You may use the harpoon " << harpoonsLeft << (string)" more times.\n"; 
@@ -150,15 +160,15 @@ void doBattle(player user, vector<scene>& enemy, int index)
         cin >> input;
         if(input == "1") {
             cout << "\nYou shot a harpoon at the " << enemy[index].getfishName() << " causing "  << (user.getAttack() + 5) << (string)" damage\n";
-            enemy[index].sethealth(-(user.getAttack() + 5));
+            enemyHealth -= (user.getAttack() + 5);
         }
         if(input == "2") {
             cout << "\nYou punched the " << enemy[index].getfishName() << " causing " << user.getAttack() << (string)" damage\n";
-            enemy[index].sethealth(-(user.getAttack()));
+            enemyHealth -= (user.getAttack());
         }
         if(input == "3" && turns >= 3) {
             cout << "\nYou slapped the " << enemy[index].getfishName() << " causing " << (user.getAttack() + 20) << (string)" damage\n";
-            enemy[index].sethealth(-(user.getAttack() + 20));
+            enemyHealth -= (user.getAttack() + 20);
             slapsLeft--;
         }
         if(input == "3" && turns < 3) {
@@ -166,36 +176,57 @@ void doBattle(player user, vector<scene>& enemy, int index)
         }
         if(input == "4") {
             cout << "\nYou blocked the " << enemy[index].getfishName() << " causing the fish to not hit you\n";
+            blocked = true;
             blocksLeft--;
         }
         turns++;
 
+        cout << "\nThe enemy has " << enemyHealth << " health left.\n";
+        cout << "You have " << user.getHealth() << " health left.\n\n";
+
         // enemy
-        if(!blocked) {
-            cout << "The enemy hit you!!";
-            user.setHealth(-(enemy[index].getattack()));
-            cout << "You have been dealth with " << enemy[index].getattack() << (string)" damage";
-        }
-        else {
-            cout << "The enemy was blocked";
-        }
-        
-        if(enemy[index].gethealth() <= 0)
+        if(blocked)
         {
-            cout << "You have won!!";
+            cout << "The enemy was blocked\n";
+        }
+        else if(enemyHealth >= 0) {
+            cout << "The enemy hit you!!\n";
+            user.setHealth(user.getHealth() - enemy[index].getattack());
+            cout << "You have been dealth with " << enemy[index].getattack() << (string)" damage\n";
+        }
+
+        cout << "You have " << user.getHealth() << " health left.\n";
+        
+        if(enemyHealth <= 0)
+        {
+            cout << "You have won!!\n";
             battleWon = true;
         }
 
         if(user.getHealth() <= 0)
         {
-            cout << "You have died. Sad.";
+            cout << "You have died. Sad.\n";
             died = true;
+            bool goAway = false;
+            while(!goAway)
+            {
+                cout << "please go away now\n";
+                string doesntMatter = "";
+                cin >> doesntMatter;
+            }
             return;
         }
 
         if(user.getOxygenLeft() <= 0) {
             cout << "You ran out of oxygen, thus you have died.\n";
             died = true;
+            bool goAway = false;
+            while(!goAway)
+            {
+                cout << "please go away now\n";
+                string doesntMatter = "";
+                cin >> doesntMatter;
+            }
             return;
         }
     }

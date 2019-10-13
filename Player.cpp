@@ -76,47 +76,56 @@ string player::getStats()
     return stats;
 }
 
-int player::setHealth(int add)
+int player::setHealth(int change)
 {
-    return health + add;
+    this->health = change;
+    return 0;
 }
 
-int player::setAttack(int add)
+int player::setAttack(int change)
 {
-    return attack + add;
+    this->attack = change;
+    return 0;
 }
 
-int player::setDefense(int add)
+int player::setDefense(int change)
 {
-    return defense + add;
+    this->defense = change;
+    return 0;
 }
 
-int player::setStrengthThrow(int add)
+int player::setStrengthThrow(int change)
 {
-    return strengthThrow + add;
+    this->strengthThrow = change;
+    return 0;
 }
 
-int player::setOxygenLeft(int add)
+int player::setOxygenLeft(int change)
 {
-    return oxygenLeft + add;
+    this->oxygenLeft = change;
+    return 0;
 }
 
-int player::setRopeDurability(int add)
+int player::setRopeDurability(int change)
 {
-    return ropeDurability + add;
+    this->ropeDurability = change;
+    return 0;
 }
 
-int player::setChanceDurabilityDecrease(int add)
+int player::setChanceDurabilityDecrease(int change)
 {
-    return chanceDurabilityDecrease + add;
+    this->chanceDurabilityDecrease = change;
+    return 0;
 }
 
-int player::setHarpoonDurability(int add)
+int player::setHarpoonDurability(int change)
 {
-    return harpoonDurability + add;
+    this->harpoonDurability = change;
+    return 0;
 }
 
-int player::setMetersToTravel(int add)
+int player::setMetersToTravel(int change)
 {
-    return metersToTravel + add;
+    this->metersToTravel = change;
+    return 0;
 }
