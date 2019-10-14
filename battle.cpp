@@ -258,7 +258,7 @@ void bubble(player user) {
         do 
         {
         if (option == 1) {
-            user.setOxygenLeft(-5);
+            user.setOxygenLeft(1);
             cout << "Oxygen is now " << user.getOxygenLeft() << "\n";
             valid = true;
         } else if (option == 2) {
@@ -268,6 +268,7 @@ void bubble(player user) {
             cin >> guess;
             if (guess == random) {
                 cout << "Congrats! You guessed correctly!\n";
+                user.setOxygenLeft(5);
                 cout << "Oxygen is now " << user.getOxygenLeft() << "\n";
             } else {
                 cout << "Incorrect guess! No oxygen received\n";
